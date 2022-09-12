@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useRef } from "react";
 import CollapseWrapper from "../common/collapse";
+
 const UseRefExercise = () => {
+    const divRef = useRef();
+    const handleClickChange = () => {
+        divRef.current.style.width = "80px";
+        divRef.current.style.height = "150px";
+        divRef.current.textContent = "text";
+    };
+
     return (
+
         <CollapseWrapper title="Упражнение">
             <p className="mt-3">
                 У вас есть блок, у которого заданы ширина и высота. Добавьте
@@ -18,9 +27,16 @@ const UseRefExercise = () => {
                     width: 60,
                     color: "white"
                 }}
+                ref={divRef}
             >
                 <small>Блок</small>
             </div>
+            <button
+                className="btn btn-primary mt-2"
+                onClick={handleClickChange}
+            >
+                Изменить свойства блока
+            </button>
         </CollapseWrapper>
     );
 };
